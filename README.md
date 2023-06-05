@@ -24,4 +24,4 @@
 ## Tasks
 
 - [Backend (Java/C#)](./backend.md)
-- [Full-Stack (JavaScript/TypeScript)](./full-stack.md)
+- [Full-Stack](./full-stack.md)
