@@ -130,47 +130,63 @@ Feel free to use the provided SQL file:
   - `inprogress`
   - `done`
 
-## Question
+## SQL
 
-You are working with following SQL table of 10 outstanding videogames:
+Given the following table named `applicants`.
 
-| id | name                     | genre      | releaseDate | developer              | engine            | price | rating |
-|---:|:-------------------------|:-----------|------------:|:-----------------------|:------------------|------:|-------:|
-|  1 | The Witcher 3: Wild Hunt | RPG        |  2015-05-19 | CD Projekt Red         | REDengine 3       |  1499 |    9.2 |
-|  2 | Half-Life 2              | FPS        |  2004-11-16 | Valve                  | Source            |   299 |    8.7 |
-|  3 | The Sims                 | Simulation |  2000-01-31 | Maxis                  | Custom            |   199 |      9 |
-|  4 | BioShock                 | FPS        |  2007-08-21 | 2K                     | Unreal Engine 2.5 |   350 |    9.1 |
-|  5 | BioShock: Infinite       | FPS        |  2013-03-26 | Irrational Games       | Unreal Engine 3   |   699 |    8.4 |
-|  6 | Quake                    | FPS        |  1996-07-22 | id Software            | Quake engine      |   299 |    8.6 |
-|  7 | Diablo                   | RPG        |  1996-12-31 | Blizzard North         | DEngine           |   299 |    8.9 |
-|  8 | World of Warcraft        | MMORPG     |  2004-11-23 | Blizzard Entertainment | Custom            |   499 |    8.8 |
-|  9 | Grand Theft Auto V       | Advenure   |  2013-09-17 | Rockstar North         | RAGE              |   899 |    8.8 |
-| 10 | Undertake                | Roleplay   |  2015-09-15 | Toby Fox               | GameMaker Studio  |   399 |    9.1 |
+| id | name               | country_id | age |
+|:---|:-------------------|:-----------|:----|
+| 1  | Bořivoj Souček     | 1          | 24  |
+| 2  | Papp Patrícia      | 2          | 33  |
+| 3  | Kocsis Ivett       | 2          | 37  |
+| 4  | Slavomír Vykukal   | 1          | 20  |
+| 5  | Bruno Malík        | 1          | 31  |
+| 6  | Veronika Lukešová  | 1          | 18  |
+| 7  | Székely Miklós     | 2          | 29  |
+| 8  | Hegedüs Benjámin   | 2          | 37  |
+| 9  | Nela Machová       | 1          | 20  |
+| 10 | Balog Rajmund      | 2          | 39  |
+| 11 | Major Borbála      | 2          | 35  |
+| 12 | Evelína Horváthová | 1          | 23  |
+| 13 | Vászoly Vivien     | 2          | 40  |
+| 14 | Lada Stýskalová    | 1          | 27  |
+| 15 | Dagmar Benešová    | 1          | 33  |
 
-`1.` Write SQL query to create the table
+Given the following table named `countries`.
 
-```mysql
-
-```
-
-`2.` Write SQL query to insert one row of data
-
-```mysql
-
-```
-
-
-`3.` Write SQL query that will return top 2 rated FPS game's
-titles and developers
-
-```mysql
-
-```
+| id | country        |
+|:---|:---------------|
+| 1  | Czech Republic |
+| 2  | Hungary        |
 
 
-`4.` Write SQL query that will make every game released in 20th century
-go on sale (reduce its price by 200)
+`1.` Write SQL query to insert a new applicant
 
-```mysql
+  ```sql
 
-```
+  ```
+
+`2.` Write SQL query that will return the youngest applicant's name
+
+  ```sql
+
+  ```
+
+`3.` Write SQL query to update the `Czech Republic` country to `Czech Republic or Slovakia`
+
+  ```sql
+
+  ```
+
+`4.` Write SQL query to select the name and the country of applicants from
+Hungary with the age 40.
+
+  ```sql
+
+  ```
+
+The expected result should be the following.
+
+| name           | country |
+|:---------------|:--------|
+| Vászoly Vivien | Hungary |
