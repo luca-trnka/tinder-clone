@@ -55,8 +55,8 @@ A new user is saved:
   - if taken, render the main page with an error message above the form
 - if the email is not taken: save the new user to the database (if all
   fields are provided and befit the database constraints)
-
 - redirect to the main page
+  - in the case of error give an error message above the form: "Error happened :("
 
 ## Backend API endpoints
 
