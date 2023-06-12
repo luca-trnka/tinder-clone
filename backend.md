@@ -139,7 +139,7 @@ A new user is saved:
   - `left`
   - `right`
 
-### List users to swipe `GET /api/users/{id}/swipe`
+### List users to swipe `GET /api/users/{currentUserId}/swipe`
 
 - it should list all users who
   - was not swiped by the current user
