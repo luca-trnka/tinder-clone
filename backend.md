@@ -142,8 +142,16 @@ A new user is saved:
     - `left`
     - `right`
 - in the case of missing data it should respond with `400` status code
-- otherwise, if all data are valid, update the swipe data and respond with
-`200` status code
+- otherwise, if all data are valid, update the swipe data in database and respond with
+`200` status code and in the following JSON response format:
+```json
+{
+  "id": 1,
+  "currentUserId": 1,
+  "otherUserId": 7,
+  "direction": "left"
+}
+```
 
 
 ### List users to swipe `GET /api/users/{currentUserId}/swipe`
