@@ -138,7 +138,7 @@ A new user is saved:
 
 - in the case of missing data it should respond with `400` status code
 - if there is no swipe data stored with the given ids: it should return with
-`400`
+`422`
 - if the direction is not valid it should respond with `422` status code
   - Valid directions values are
     - `left`
