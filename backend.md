@@ -161,7 +161,7 @@ A new user is saved:
   - who was not swiped by the current user and
   - current user should not be in the results and
   - users should be from the opposite gender (males searching for females and vica-versa)
-- the response should be in JSON format
+- the response should be in JSON format with status code `200`
 - Example JSON response:
   ```json
   [
