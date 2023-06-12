@@ -154,13 +154,13 @@ A new user is saved:
 }
 ```
 
-
 ### List users to swipe `GET /api/users/{currentUserId}/swipe`
 
-- it should list all users who
-  - was not swiped by the current user
-  - is from the another gender
-- the current user's id is in the path variable
+- the current user's id should be in the path variable
+- write query which would list all users:
+  - who was not swiped by the current user and
+  - current user should not be in the results and
+  - users should be from the opposite gender (males searching for females and vica-versa)
 - the response should be in JSON format
 - Example JSON response:
   ```json
