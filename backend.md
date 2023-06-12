@@ -39,14 +39,12 @@ Create the following endpoints:
 
 The main page is rendered:
 
-- title/heading: Tinder clone
-- all known users are listed in a table containing these data: username, age,
-description, gender
+- has title/heading: Tinder clone
+- all users are listed in a table containing these data: email, birth_date, gender, bio
 - a form is displayed to add a new user
-  - form has to contain a field for: username, select for the gender, age and
-    description (text area)
-
-- the form should be sent to the POST `/register` endpoint
+  - form has to contain a field for: email, select for the gender (`female`,`male`), birth_date (text) and
+    bio (text area)
+- the form should be submitted to the POST `/register` endpoint
 
 ### POST `/register`
 
