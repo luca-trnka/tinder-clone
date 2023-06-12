@@ -5,17 +5,17 @@ profiles (one at a time).
 
 ## Highlights
 
-### It has two frontend pages which can:
+### It has one frontend page which:
 
-  - list all users and a form to register a new user
-  - show profile page of a user
+  - can list all users
+  - has a form to register a new user
 
-### It has a backend which can:
+### It has multiple backend endpoint which can:
 
-  - list all users
-  - save user
-  - save a swipe
-  - update swipe
+  - list users to swipe `GET /api/users/{currentUserId}/swipe`
+  - create user `POST /api/users`
+  - handling swipe `POST /api/users/{currentUserId}/swipe`
+  - update swipe `PUT /api/users/{currentUserId}/swipe`
 
 ## Database
 
@@ -25,16 +25,15 @@ created the swipe and the user that he swiped for. In addition to that,
 it will store the direction of the swipe. User table doesn't store
 the information about swipes.
 
-- User:
-  - id, username, age, gender, description
+- user:
+  - id, email, birth_date, gender, bio
 
-- Swipe:
+- swipe:
   - id, current_user_id, other_user_id, direction
 
-## Endpoints
+## Frontend
 
 Create the following endpoints:
-
 
 ### GET `/`
 
@@ -49,70 +48,116 @@ description, gender
 
 - the form should be sent to the POST `/register` endpoint
 
-
-
 ### POST `/register`
 
 A new user is saved:
 
 - validate the user input, every field is *required*
-  - should check if the username is already taken
+  - should check if the email is already taken
   - if taken, render the main page with an error message above the form
-- if the username is not taken: save the new user to the database (if all
-fields are provided and befit the database constraints)
+- if the email is not taken: save the new user to the database (if all
+  fields are provided and befit the database constraints)
 
 - redirect to the main page
 
-### GET `/profile/{id}`
+## Backend API endpoints
 
-- Path variable `{id}` refers to the user that is swiping (`current` user)
-- The new page is rendered with the users details:
+### Create user `POST /api/users`
 
-  - a title/heading with the name of the first user (or random user) from database
-  (can't be the same user as the one that is swiping)
-  - a smaller heading with the age and the gender
-  - a paragraph with the description of the user
-  - a form for swiping containing:
+- The new user data should be in the request's body in JSON format, this is how
+  we will be able to create one:
 
-    - hidden input for the `current` user's id, and another the
-    hidden input for the random `other` user's id
-    - a direction preferably using radio buttons, but a select is good as well
-    - the form should be sent to the POST `/swipe` endpoint
+  ```json
+  {
+    "email": "mary-hauser@pure.com",
+    "birth_date": "2000-07-06",
+    "gender": "female",
+    "bio": "I'm a virgin, I'm not sure how I got here."
+  }
+  ```
+- if the email is already taken it should respond with `422` status code
+- otherwise, if all data are valid, create a new user and respond with
+`201` status code
+- Example JSON response:
+  ```json
+  {
+    "id": 1,
+    "email": "mary-hauser@pure.com",
+    "birth_date": "2000-07-06",
+    "gender": "female",
+    "bio": "I'm a virgin, I'm not sure how I got here."
+  }
+  ```
 
+### Swipe `POST /api/users/{currentUserId}/swipe`
 
-### POST `/swipe`
+- A new swipe is saved in database
+- the path is containing the current user's id
+- the request body containing other user's id and the swipe
+  direction
+- if the direction is not valid it should respond with `422` status code
+- otherwise, if all data are valid, create a new swipe and respond with
+`201` status code
+- Valid directions values are
+  - `left`
+  - `right`
+- Example JSON request:
+  ```json
+  {
+    "otherUserId": 7,
+    "direction" : "left"
+  }
+  ```
+- Example JSON response:
+  ```json
+  {
+    "id": 1,
+    "currentUserId": 1,
+    "otherUserId": 7,
+    "direction": "left"
+  }
+  ```
 
-A new swipe is saved:
-
-  - containing the current user's id, the other user's id and the swipe
-    direction
-  - if there is a swipe present with the given ids: overwrite it
-  - otherwise, create a new one
-  - should redirect back to the `/profile/{id}` endpoint with the current user's
-  id as path variable
-
-
-### PUT `/swipe`
+### Update swipe `PUT /api/users/{currentUserId}/swipe`
 
 - The new swipe data should be in the request's body in JSON format, this is how
   we will be able to modify it:
 
   ```json
   {
-    "currentUserId": 2,
     "otherUserId": 7,
     "direction" : "left"
   }
   ```
 
 - if there is no swipe data stored with the given id-s: it should return with
-`404`
+`400`
 - if the direction is not valid it should respond with `422` status code
 - otherwise, if all data are valid, update the swipe data and respond with
-`202` status code
+`200` status code
 - Valid directions values are
   - `left`
   - `right`
+
+### List users to swipe `GET /api/users/{id}/swipe`
+
+- it should list all users who
+  - was not swiped by the current user
+  - is from the another gender
+- the current user's id is in the path variable
+- the response should be in JSON format
+- Example JSON response:
+  ```json
+  [
+    {
+      "id": 2,
+      "email": "john-the-smith@pure.com",
+      "birth_date": "2000-07-07",
+      "gender": "male",
+      "bio": "I'm a smith, John Smith."
+    }
+  ]
+  ```
 
 ## Question
 
