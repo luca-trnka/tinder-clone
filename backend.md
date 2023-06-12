@@ -73,8 +73,12 @@ A new user is saved:
     "bio": "I'm a virgin, I'm not sure how I got here."
   }
   ```
-- if the email is already taken it should respond with `422` status code
 - in the case of missing data it should respond with `400` status code
+- if the email is already taken it should respond with `422` status code
+- if the gender is not valid it should respond with `422` status code
+  - Valid gender values are
+    - `female`
+    - `male
 - otherwise, if all data are valid, create a new user and respond with
 `201` status code
 - Example JSON response:
