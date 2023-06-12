@@ -133,12 +133,13 @@ A new user is saved:
 - if there is no swipe data stored with the given id-s: it should return with
 `400`
 - if the direction is not valid it should respond with `422` status code
+  - Valid directions values are
+    - `left`
+    - `right`
 - in the case of missing data it should respond with `400` status code
 - otherwise, if all data are valid, update the swipe data and respond with
 `200` status code
-- Valid directions values are
-  - `left`
-  - `right`
+
 
 ### List users to swipe `GET /api/users/{currentUserId}/swipe`
 
