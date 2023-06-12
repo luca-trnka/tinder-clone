@@ -99,6 +99,13 @@ A new user is saved:
 - the path is containing the current user's id
 - the request body containing other user's id and the swipe
   direction
+    - Example JSON request:
+      ```json
+      {
+        "otherUserId": 7,
+        "direction" : "left"
+      }
+      ```
 - if the direction is not valid it should respond with `422` status code
   - Valid directions values are
     - `left`
@@ -106,13 +113,6 @@ A new user is saved:
 - in the case of missing data it should respond with `400` status code
 - otherwise, if all data are valid, create a new swipe and respond with
 `201` status code
-- Example JSON request:
-  ```json
-  {
-    "otherUserId": 7,
-    "direction" : "left"
-  }
-  ```
 - Example JSON response:
   ```json
   {
