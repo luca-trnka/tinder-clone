@@ -79,7 +79,7 @@ A new user is saved:
 - if the gender is not valid it should respond with `422` status code
   - Valid gender values are
     - `female`
-    - `male
+    - `male`
 - otherwise, if all data are valid, create a new user and respond with
 `201` status code
 - Example JSON response:
