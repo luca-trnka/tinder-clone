@@ -95,12 +95,12 @@ A new user is saved:
 - the request body containing other user's id and the swipe
   direction
 - if the direction is not valid it should respond with `422` status code
+  - Valid directions values are
+    - `left`
+    - `right`
 - in the case of missing data it should respond with `400` status code
 - otherwise, if all data are valid, create a new swipe and respond with
 `201` status code
-- Valid directions values are
-  - `left`
-  - `right`
 - Example JSON request:
   ```json
   {
