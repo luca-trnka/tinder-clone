@@ -52,6 +52,7 @@ A new user is saved:
 
 - validate the user input, every field is *required*
   - should check if the email is already taken
+  - should check the gender, it can be only `female` or `male`
   - if taken, render the main page with an error message above the form
 - if the email is not taken: save the new user to the database (if all
   fields are provided)
