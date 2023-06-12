@@ -74,6 +74,7 @@ A new user is saved:
   }
   ```
 - if the email is already taken it should respond with `422` status code
+- in the case of missing data it should respond with `400` status code
 - otherwise, if all data are valid, create a new user and respond with
 `201` status code
 - Example JSON response:
@@ -94,6 +95,7 @@ A new user is saved:
 - the request body containing other user's id and the swipe
   direction
 - if the direction is not valid it should respond with `422` status code
+- in the case of missing data it should respond with `400` status code
 - otherwise, if all data are valid, create a new swipe and respond with
 `201` status code
 - Valid directions values are
@@ -131,6 +133,7 @@ A new user is saved:
 - if there is no swipe data stored with the given id-s: it should return with
 `400`
 - if the direction is not valid it should respond with `422` status code
+- in the case of missing data it should respond with `400` status code
 - otherwise, if all data are valid, update the swipe data and respond with
 `200` status code
 - Valid directions values are
@@ -157,7 +160,7 @@ A new user is saved:
   ]
   ```
 
-## Question
+## SQL
 
 Given the following table named `applicants`.
 
