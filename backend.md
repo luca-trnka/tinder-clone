@@ -19,10 +19,10 @@ profiles (one at a time).
 
 ## Database
 
-There are two tables, one is "user" and another is "swipe".
+There are two tables, one is "users" and another is "swipes".
 In this application, swipe will store the information about the user that
 created the swipe and the user that he swiped for. In addition to that,
-it will store the direction of the swipe. User table doesn't store
+it will store the direction of the swipe. Users table doesn't store
 the information about swipes.
 
 - users:
