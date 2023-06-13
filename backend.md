@@ -15,7 +15,7 @@ profiles (one at a time).
 - list users to swipe `GET /api/users/{currentUserId}/swipe`
 - create user `POST /api/users`
 - handling swipe `POST /api/users/{currentUserId}/swipe`
-- update swipe `PUT /api/users/{currentUserId}/swipe`
+- update swipe `PATCH /api/users/{currentUserId}/swipe`
 
 ## Database
 
@@ -129,7 +129,7 @@ A new user is saved:
   }
   ```
 
-### Update swipe `PUT /api/users/{currentUserId}/swipe`
+### Update swipe `PATCH /api/users/{currentUserId}/swipe`
 
 - The new swipe data should be in the request's body in JSON format, this is how
   we will be able to modify it:
