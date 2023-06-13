@@ -9,6 +9,7 @@ profiles (one at a time).
 
 - can list all users
 - has a form to register a new user
+- `POST /register` will register a new user
 
 ### It has multiple backend endpoint which can:
 
