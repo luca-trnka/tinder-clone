@@ -1,19 +1,3 @@
-/*
- Navicat MySQL Data Transfer
-
- Source Server         : localhost
- Source Server Type    : MariaDB
- Source Server Version : 101102 (10.11.2-MariaDB)
- Source Host           : localhost:3306
- Source Schema         : tinder_clone
-
- Target Server Type    : MariaDB
- Target Server Version : 101102 (10.11.2-MariaDB)
- File Encoding         : 65001
-
- Date: 13/06/2023 10:29:39
-*/
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
