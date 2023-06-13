@@ -25,10 +25,10 @@ created the swipe and the user that he swiped for. In addition to that,
 it will store the direction of the swipe. User table doesn't store
 the information about swipes.
 
-- user:
+- users:
   - id, email, birth_date, gender, bio
 
-- swipe:
+- swipes:
   - id, current_user_id, other_user_id, direction
 
 ## Frontend
