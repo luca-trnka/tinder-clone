@@ -9,14 +9,15 @@ profiles (one at a time).
 
 - can list all users
 - has a form to register a new user
-- `POST /register` will register a new user
 
 ### It has multiple backend endpoint which can:
 
-- list users to swipe `GET /api/users/{currentUserId}/swipe`
-- create user `POST /api/users`
-- handling swipe `POST /api/users/{currentUserId}/swipe`
-- update swipe `PATCH /api/users/{currentUserId}/swipe`
+- `POST /register` will register a new user and redirect back to the main page
+- There are API endpoints as well:
+  - list users to swipe `GET /api/users/{currentUserId}/swipe`
+  - create user `POST /api/users`
+  - handling swipe `POST /api/users/{currentUserId}/swipe`
+  - update swipe `PATCH /api/users/{currentUserId}/swipe`
 
 ## Database
 
