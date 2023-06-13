@@ -31,6 +31,8 @@ the information about swipes.
 - swipes:
   - id, current_user_id, other_user_id, direction
 
+Example database for MySQL can be found here: [tinder_clone.sql](assets/tinder_clone.sql)
+
 ## Frontend
 
 Create the following endpoints:
