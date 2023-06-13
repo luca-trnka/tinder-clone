@@ -7,15 +7,15 @@ profiles (one at a time).
 
 ### It has one frontend page which:
 
-  - can list all users
-  - has a form to register a new user
+- can list all users
+- has a form to register a new user
 
 ### It has multiple backend endpoint which can:
 
-  - list users to swipe `GET /api/users/{currentUserId}/swipe`
-  - create user `POST /api/users`
-  - handling swipe `POST /api/users/{currentUserId}/swipe`
-  - update swipe `PUT /api/users/{currentUserId}/swipe`
+- list users to swipe `GET /api/users/{currentUserId}/swipe`
+- create user `POST /api/users`
+- handling swipe `POST /api/users/{currentUserId}/swipe`
+- update swipe `PUT /api/users/{currentUserId}/swipe`
 
 ## Database
 
@@ -26,7 +26,7 @@ it will store the direction of the swipe. User table doesn't store
 the information about swipes.
 
 - users:
-  - id, email, birth_date, gender, bio
+  - id, name, email, birth_date, gender, bio
 
 - swipes:
   - id, current_user_id, other_user_id, direction
@@ -42,10 +42,11 @@ Create the following endpoints:
 The main page is rendered:
 
 - has title/heading: Tinder clone
-- all users are listed in a table containing these data: email, birth_date, gender, bio
+- all users are listed in a table containing these data: name, age, gender, bio
+  - age should be calculated from the birth_date
 - a form is displayed to add a new user
-  - form has to contain a field for: email, select for the gender (`female`,`male`), birth_date (text) and
-    bio (text area)
+  - form has to contain a field for: name, email, select for the gender (`female`,`male`), birth_date (text) and
+    bio (textarea)
 - the form should be submitted to the POST `/register` endpoint
 
 ### POST `/register`
@@ -70,6 +71,7 @@ A new user is saved:
 
   ```json
   {
+    "name": "Mary",
     "email": "mary-hauser@pure.com",
     "birth_date": "2000-07-06",
     "gender": "female",
@@ -83,11 +85,12 @@ A new user is saved:
     - `female`
     - `male`
 - otherwise, if all data are valid, create a new user and respond with
-`201` status code
+  `201` status code
 - Example JSON response:
   ```json
   {
     "id": 1,
+    "name": "Mary",
     "email": "mary-hauser@pure.com",
     "birth_date": "2000-07-06",
     "gender": "female",
@@ -101,13 +104,13 @@ A new user is saved:
 - the path is containing the current user's id
 - the request body containing other user's id and the swipe
   direction
-    - Example JSON request:
-      ```json
-      {
-        "otherUserId": 7,
-        "direction" : "left"
-      }
-      ```
+  - Example JSON request:
+    ```json
+    {
+      "otherUserId": 7,
+      "direction" : "left"
+    }
+    ```
 - in the case of missing data it should respond with `400` status code
 - if previous swipe was found with the same currentUserId and otherUserId then respond with `422` status code
 - if the direction is not valid it should respond with `422` status code
@@ -115,7 +118,7 @@ A new user is saved:
     - `left`
     - `right`
 - otherwise, if all data are valid, create a new swipe and respond with
-`201` status code
+  `201` status code
 - Example JSON response:
   ```json
   {
@@ -140,13 +143,13 @@ A new user is saved:
 
 - in the case of missing data it should respond with `400` status code
 - if there is no swipe data stored with the given ids: it should return with
-`422`
+  `422`
 - if the direction is not valid it should respond with `422` status code
   - Valid directions values are
     - `left`
     - `right`
 - otherwise, if all data are valid, update the swipe data in database and respond with
-`200` status code and in the following JSON response format:
+  `200` status code and in the following JSON response format:
 ```json
 {
   "id": 1,
@@ -159,18 +162,20 @@ A new user is saved:
 ### List users to swipe `GET /api/users/{currentUserId}/swipe`
 
 - the current user's id should be in the path variable
-- write query which would list all users:
+- the response should contain a list of users:
   - who was not swiped by the current user and
   - current user should not be in the results and
   - users should be from the opposite gender (males searching for females and vica-versa)
+  - email should not be in the results because it's sensitive data
+  - age should be calculated from the birth_date
 - the response should be in JSON format with status code `200`
 - Example JSON response:
   ```json
   [
     {
       "id": 2,
-      "email": "john-the-smith@pure.com",
-      "birth_date": "2000-07-07",
+      "name": "John",
+      "age": 25,
       "gender": "male",
       "bio": "I'm a smith, John Smith."
     }
