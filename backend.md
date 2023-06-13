@@ -49,6 +49,8 @@ The main page is rendered:
     bio (textarea)
 - the form should be submitted to the POST `/register` endpoint
 
+![main-page](assets/backend-tinder-clone.png)
+
 ### POST `/register`
 
 A new user is saved:
