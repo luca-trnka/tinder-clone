@@ -5,13 +5,6 @@ their orders based on their preferences. :stew:
 
 **Please read the whole description in order to understand the application.**
 
-## Database
-
-Feel free to use the provided SQL file:
-
-- [for MySQL](assets/fullstack-takeout.sql)
-- [for SQLite](assets/fullstack-takeout-sqlite.sql)
-
 ## `GET /`
 
 - The main page should be rendered
