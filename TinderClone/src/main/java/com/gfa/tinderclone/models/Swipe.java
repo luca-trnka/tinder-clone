@@ -8,7 +8,7 @@ public class Swipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long sId;
+    private Long id;
     private Long current_user_id;
     private Long other_user_id;
     private String direction;
@@ -22,12 +22,12 @@ public class Swipe {
     public Swipe() {
     }
 
-    public Long getsId() {
-        return sId;
+    public Long getId() {
+        return id;
     }
 
-    public void setsId(Long sId) {
-        this.sId = sId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getCurrent_user_id() {

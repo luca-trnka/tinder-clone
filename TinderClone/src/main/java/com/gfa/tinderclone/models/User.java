@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uId;
+    private Long id;
     private String name;
     private String email;
     private Date birth_date;
@@ -28,12 +28,12 @@ public class User {
         this.bio = bio;
     }
 
-    public Long getuId() {
-        return uId;
+    public Long getId() {
+        return id;
     }
 
-    public void setuId(Long uId) {
-        this.uId = uId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
