@@ -8,4 +8,6 @@ public interface SwipeService {
     Swipe updateSwipe(Swipe swipe);
 
     Swipe getSwipeByUserIds(Long currentUserId, Long otherUserId);
+
+    void saveSwipe(Swipe swipe);
 }

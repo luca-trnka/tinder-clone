@@ -16,4 +16,5 @@ public interface UserService {
     public boolean isSwipeExisting(Long currentUserId, Long otherUserId);
 
 
+    User randomUser();
 }

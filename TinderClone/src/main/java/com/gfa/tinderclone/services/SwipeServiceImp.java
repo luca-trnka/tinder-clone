@@ -27,4 +27,8 @@ public class SwipeServiceImp implements SwipeService {
     public Swipe getSwipeByUserIds(Long currentUserId, Long otherUserId) {
         return swipeRepository.findByCurrent_user_idAndOther_user_id(currentUserId, otherUserId);
     }
+    @Override
+    public void saveSwipe(Swipe swipe) {
+        swipeRepository.save(swipe);
+    }
 }

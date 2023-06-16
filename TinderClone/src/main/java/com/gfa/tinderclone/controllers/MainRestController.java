@@ -8,6 +8,7 @@ import com.gfa.tinderclone.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,17 +34,17 @@ public class MainRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        // Check if the email is already taken
+        //checking if the email exist
         if (userService.isExisting(user.getEmail())) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
         }
 
-        // Check if the gender is valid
+        //checking if the gender is valid
         if (!user.getGender().equals("female") && !user.getGender().equals("male")) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
         }
 
-        // Create a new user
+        //saving new user
         userService.registerUser(user);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(user);

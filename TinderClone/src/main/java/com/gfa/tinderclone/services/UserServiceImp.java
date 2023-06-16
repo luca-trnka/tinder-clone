@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UserServiceImp implements UserService{
@@ -57,6 +58,16 @@ public class UserServiceImp implements UserService{
         return swipeRepository.existsByCurrent_user_idAndOther_user_id(currentUserId, otherUserId);
     }
 
+    @Override
+    public User randomUser() {
+        if (!userRepository.findAll().isEmpty()) {
+            List<User> userList = userRepository.findAll();
+            Random random = new Random();
+            return userList.get(random.nextInt(userList.size()));
+        } else {
+            return null;
+        }
+    }
 
 
 }
