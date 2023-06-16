@@ -17,13 +17,13 @@ public class User {
     private String email;
     private Date birth_date;
     //private int age;
-    private String gender;
+    private Gender gender;
     private String bio;
 
     public User() {
     }
 
-    public User(String name, String gender, Date birth_date, String bio) {
+    public User(String name, Gender gender, Date birth_date, String bio) {
         this.name = name;
         this.gender = gender;
         this.birth_date = birth_date;
@@ -62,11 +62,11 @@ public class User {
         this.birth_date = birth_date;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
