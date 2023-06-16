@@ -27,10 +27,14 @@
         </tbody>
     </table>
 </div>
-<label th:if="(${error}==true)" style="color: red">Error happened :(</label>
 
 <h1>Register</h1>
+<p th:if="${error}" th:text="${error}"></p>
 <form action="/register" method="post" th:object="${currentUser}">
+<!--    <div th:if="${error}">-->
+<!--        <p><span style="color: red">Error happened :(</span></p>-->
+<!--    </div>-->
+
     <div>
         <label for="name"> Name:</label>
         <input id="name" type="text" th:field="*{name}" required></br>
@@ -41,7 +45,7 @@
     </div>
     <div>
         <label for="birth_date"> Age:</label>
-        <input id="birth_date" type="date" th:field="*{birth_date}" required></br>
+        <input id="birth_date" type="text" th:field="*{birth_date}" required></br>
     </div>
     <div>
         <label for="gender"> Gender:</label>

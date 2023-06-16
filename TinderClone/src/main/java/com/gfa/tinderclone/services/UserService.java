@@ -8,11 +8,12 @@ public interface UserService {
 
     public List<User> getAllUsers();
     public void registerUser(User user);
-    boolean getUserByEmail(String email);
-    boolean getUserByName(String name);
-    User getUserById(Long id);
+    public boolean isExisting(String email);
+    public boolean getUserByName(String name);
+    public User getUserById(Long id);
 
-    User getEmptyUser();
+    public User getEmptyUser();
+    public boolean isSwipeExisting(Long currentUserId, Long otherUserId);
 
 
 }

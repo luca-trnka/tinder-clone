@@ -1,6 +1,7 @@
 package com.gfa.tinderclone.services;
 
 import com.gfa.tinderclone.models.User;
+import com.gfa.tinderclone.repositories.SwipeRepository;
 import com.gfa.tinderclone.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ import java.util.Optional;
 public class UserServiceImp implements UserService{
 
     private final UserRepository userRepository;
+    private final SwipeRepository swipeRepository;
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository) {
+    public UserServiceImp(UserRepository userRepository, SwipeRepository swipeRepository) {
         this.userRepository = userRepository;
+        this.swipeRepository = swipeRepository;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public boolean getUserByEmail(String email) {
+    public boolean isExisting(String email) {
         Optional<User> existingUser = userRepository.findUserByEmail(email);
         return existingUser.isPresent();
     }
@@ -48,4 +51,12 @@ public class UserServiceImp implements UserService{
     public User getEmptyUser() {
         return new User();
     }
+
+    @Override
+    public boolean isSwipeExisting(Long currentUserId, Long otherUserId) {
+        return swipeRepository.existsByCurrent_user_idAndOther_user_id(currentUserId, otherUserId);
+    }
+
+
+
 }
