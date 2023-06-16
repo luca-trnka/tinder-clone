@@ -2,6 +2,8 @@ package com.gfa.tinderclone.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Entity
@@ -13,19 +15,33 @@ public class User {
     private Long id;
     private String name;
     private String email;
-    private Date birth_date;
-    //private int age;
-    private Gender gender;
+    private LocalDate birth_date;
+    private int age;
+    private String gender;
     private String bio;
 
     public User() {
     }
 
-    public User(String name, Gender gender, Date birth_date, String bio) {
+    public User(String name, String gender, LocalDate birth_date, String bio) {
         this.name = name;
         this.gender = gender;
         this.birth_date = birth_date;
         this.bio = bio;
+    }
+
+    public int AgeCalculator(LocalDate birth_date) {
+        LocalDate now = LocalDate.now();
+        Period period = Period.between(birth_date, now);
+        return period.getYears();
+    }
+
+    public int getAge() {
+        return AgeCalculator(getBirth_date());
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Long getId() {
@@ -52,19 +68,19 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirth_date() {
+    public LocalDate getBirth_date() {
         return birth_date;
     }
 
-    public void setBirth_date(Date birth_date) {
+    public void setBirth_date(LocalDate birth_date) {
         this.birth_date = birth_date;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

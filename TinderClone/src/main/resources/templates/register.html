@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tinder Clone</title>
+</head>
+<body>
+<h1>Tinder Clone</h1>
+
+<div class="table">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Bio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user:${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.gender}"></td>
+            <td th:text="${user.getAge()}"></td>
+            <td th:text="${user.bio}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<label th:if="(${error}==true)" style="color: red">Error happened :(</label>
+
+<h1>Register</h1>
+<form action="/register" method="post" th:object="${currentUser}">
+    <div>
+        <label for="name"> Name:</label>
+        <input id="name" type="text" th:field="*{name}" required></br>
+    </div>
+    <div>
+        <label for="email"> Email:</label>
+        <input id="email" type="text" th:field="*{email}" required></br>
+    </div>
+    <div>
+        <label for="birth_date"> Age:</label>
+        <input id="birth_date" type="date" th:field="*{birth_date}" required></br>
+    </div>
+    <div>
+        <label for="gender"> Gender:</label>
+        <select id="gender" th:field="*{gender}" required></br>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select>
+    </div>
+    <div>
+        <label for="bio">Bio:</label>
+        <textarea id="bio" th:field="*{bio}" type="text"></textarea>
+    </div>
+    <br>
+    <input type="submit" value="Register">
+</form>
+</body>
+</html>
