@@ -71,7 +71,7 @@ their orders based on their preferences. :stew:
   - `done`
 
 - This endpoint should respond in JSON format with those
-  orders only that are still in progress
+  orders that have the status provided
 
   ```json
   [
