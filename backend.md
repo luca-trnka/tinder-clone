@@ -219,26 +219,35 @@ Given the following table named `countries`.
 `1.` Write SQL query to insert a new applicant
 
   ```sql
-
+insert into applicants (name, country_id, age)
+values ('Lucie Trnková', 1, 31);
   ```
 
 `2.` Write SQL query that will return the youngest applicant's name
 
   ```sql
-
+select name
+from applicants
+order by age
+limit 1;
   ```
 
 `3.` Write SQL query to update the `Czech Republic` country to `Czech Republic or Slovakia`
 
   ```sql
-
+update countries
+set country = 'Czech Republic or Slovakia'
+where id = 1;
   ```
 
 `4.` Write SQL query to select the name and the country of applicants from
 Hungary with the age 40.
 
   ```sql
-
+select applicants.name, countries.country
+from applicants
+inner join countries on applicants.country_id = countries.id
+where applicants.age = 40 and a.country_id = (select id from countries where country = 'Hungary');
   ```
 
 The expected result should be the following.
